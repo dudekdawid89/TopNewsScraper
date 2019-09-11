@@ -1,0 +1,17 @@
+    <ul>
+          {{#each article}}
+          
+          <li>
+            
+            <div class="headline" data-id="{{_id}}">{{title}}</div>
+          <p >{{link}}</p>
+
+          <button class="buttonNote" data-id="{{_id}}">Note</button>
+          <div id="notes"></div>
+          </li>
+     
+          {{/each}}
+        </ul>
+
+ 
+    </div>

@@ -1,0 +1,23 @@
+       <button id="scrapeButton"><a href="/scrape">Scrape</a></button>
+       <button id="savedButton"><a href="/saved">Saved</a></button>
+   <div id="wrapper">
+      <h1>Main page</h1>
+
+
+        <ul>
+          {{#each article}}
+          
+          <li>
+            
+            <div class="headline" data-id="{{_id}}">{{title}}</div>
+          <p >{{link}}</p>
+
+          <button class="buttonSaved" data-id="{{_id}}"> saved</button>
+          <div id="notes"></div>
+          </li>
+     
+          {{/each}}
+        </ul>
+
+ 
+    </div>
