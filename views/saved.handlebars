@@ -1,4 +1,4 @@
-    <ul>
+    {{!-- <ul>
           {{#each article}}
           
           <li>
@@ -14,4 +14,27 @@
         </ul>
 
  
+    </div> --}}
+
+    <div id="wrapper">
+  <div class="text-center">
+    <h1>Saved News</h1>
+    <a id="scrapeButton" class="btn btn-outline-dark" href="/scrape">Click to scrape article</a>
+  </div>
+  <br>
+  {{#each article}}
+  <div class="card">
+    <h5 class="card-header headline" data-id="{{_id}}">{{title}}</h5>
+    <div class="card-body">
+      <h5 class="card-title headline" data-id="{{_id}}"></h5>
+      <p class="card-text">{{summary}}</p>
+
+      <a href="{{link}}" class="btn btn-outline-dark">Link to website</a>
+          <button class="buttonNote btn btn-outline-dark" data-id="{{_id}}">Note</button>
+          <div id="notes"></div>
+
     </div>
+  </div>
+  <br>
+  {{/each}}
+</div>

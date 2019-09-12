@@ -1,38 +1,23 @@
-       <a id="scrapeButton" class="btn btn-outline-dark" href="/scrape">Click to scrape article</a>
-       <a id="savedButton" class="btn btn-outline-dark" href="/saved">Saved articles</a>
-   <div id="wrapper">
-      <h1>Main page</h1>
+<div id="wrapper">
+  <div class="text-center">
+    <h1>Top News Scraper</h1>
+    <a id="scrapeButton" class="btn btn-outline-dark" href="/scrape">Click to scrape article</a>
+    </button><a id="savedButton" class="btn btn-outline-dark" href="/saved">Saved articles</a>
 
-
-
-{{#each article}}
-<div class="card">
-  <h5 class="card-header headline" data-id="{{_id}}">{{title}}</h5>
-  <div class="card-body">
-    <h5 class="card-title headline" data-id="{{_id}}"></h5>
-    <p class="card-text">{{summary}}</p>
-    
-    <a href="{{link}}" class="btn btn-outline-dark">Link to website</a>
-     <button class="buttonSaved btn btn-outline-dark" data-id="{{_id}}">Save Article</button>
   </div>
-</div>
-<br>
+  <br>
+  {{#each article}}
+  <div class="card">
+    <h5 class="card-header headline" data-id="{{_id}}">{{title}}</h5>
+    <div class="card-body">
+      <h5 class="card-title headline" data-id="{{_id}}"></h5>
+      <p class="card-text">{{summary}}</p>
+      <img src="{{image}}" alt="">
 
- {{/each}}
-        {{!-- <ul>
-          {{#each article}}
-          
-          <li>
-            
-            <div class="headline" data-id="{{_id}}">{{title}}</div>
-          <p >{{link}}</p>
-
-          <button class="buttonSaved" data-id="{{_id}}"> saved</button>
-          <div id="notes"></div>
-          </li>
-     
-          {{/each}}
-        </ul> --}}
-
- 
+      <a href="{{link}}" class="btn btn-outline-dark">Link to website</a>
+      <button class="buttonSaved btn btn-outline-dark" data-id="{{_id}}">Save Article</button>
     </div>
+  </div>
+  <br>
+  {{/each}}
+</div>

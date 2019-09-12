@@ -61,7 +61,12 @@ app.get("/scrape", function(req, res) {
       result.summary = $(this)
       .children("p.summary")
       .children("a")
-      .text()
+      .text();
+      result.image = $(this)
+      .children("ul")
+      .children("li")
+      .children("img")
+      .attr("src")
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
         .then(function(dbArticle) {
@@ -83,7 +88,7 @@ app.get("/scrape", function(req, res) {
 // Route for getting all Articles from the db
 app.get("/", function(req, res) {
   // Grab every document in the Articles collection
-  db.Article.find().sort({ title: -1 })
+  db.Article.find({})
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       res.render("index",{article: dbArticle});
