@@ -1,25 +1,8 @@
-    {{!-- <ul>
-          {{#each article}}
-          
-          <li>
-            
-            <div class="headline" data-id="{{_id}}">{{title}}</div>
-          <p >{{link}}</p>
-
-          <button class="buttonNote" data-id="{{_id}}">Note</button>
-          <div id="notes"></div>
-          </li>
-     
-          {{/each}}
-        </ul>
-
- 
-    </div> --}}
-
-    <div id="wrapper">
+<div id="wrapper">
   <div class="text-center">
     <h1>Saved News</h1>
-    <a id="scrapeButton" class="btn btn-outline-dark" href="/scrape">Click to scrape article</a>
+    <hr>
+    <a id="scrapeButton" class="btn btn-outline-dark" href="/">Articles</a>
   </div>
   <br>
   {{#each article}}
@@ -30,8 +13,8 @@
       <p class="card-text">{{summary}}</p>
 
       <a href="{{link}}" class="btn btn-outline-dark">Link to website</a>
-          <button class="buttonNote btn btn-outline-dark" data-id="{{_id}}">Note</button>
-          <div id="notes"></div>
+      <button class="buttonNote btn btn-outline-dark" data-id="{{_id}}">Note</button>
+      <div id="notes"></div>
 
     </div>
   </div>

@@ -1,11 +1,12 @@
 <div id="wrapper">
   <div class="text-center">
     <h1>Top News Scraper</h1>
+    <hr>
     <a id="scrapeButton" class="btn btn-outline-dark" href="/scrape">Click to scrape article</a>
     </button><a id="savedButton" class="btn btn-outline-dark" href="/saved">Saved articles</a>
 
   </div>
-  <br>
+ <br>
   {{#each article}}
   <div class="card">
     <h5 class="card-header headline" data-id="{{_id}}">{{title}}</h5>
