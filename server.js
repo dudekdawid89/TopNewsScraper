@@ -37,10 +37,11 @@ app.get("/scrape", function (req, res) {
         .children("a")
         .text();
       result.image = $(this)
-        .children("ul")
-        .children("li.lastItem")
+        .children("span")
+        .children("a")
         .children("img")
         .attr("src");
+      console.log(result)
       db.Article.create(result)
         .then(function (dbArticle) {
           console.log(dbArticle);
