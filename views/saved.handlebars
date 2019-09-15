@@ -1,20 +1,37 @@
+  <div id="notes"></div>
 <div id="wrapper">
+
   <div class="text-center">
     <h1>Saved News</h1>
     <hr>
     <a id="scrapeButton" class="btn btn-outline-dark" href="/">Articles</a>
   </div>
+  
   <br>
+
   {{#each article}}
   <div class="card">
     <h5 class="card-header headline" data-id="{{_id}}">{{title}}</h5>
     <div class="card-body">
-      <h5 class="card-title headline" data-id="{{_id}}"></h5>
+      <div class="row">
+        <div class="col-md-5">
+          <img src="{{image}}" alt="">
+          <br>
+          <br>
+        </div>
+      <div class="col-md-7">
       <p class="card-text">{{summary}}</p>
+    
+      </div>
+
+      </div>
+
+      
 
       <a href="{{link}}" class="btn btn-outline-dark">Link to website</a>
       <button class="buttonNote btn btn-outline-dark" data-id="{{_id}}">Note</button>
-      <div id="notes"></div>
+      <button class="buttonDelete btn btn-outline-dark" data-id="{{_id}}">Delete article</button>
+
 
     </div>
   </div>

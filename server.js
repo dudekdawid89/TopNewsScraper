@@ -103,6 +103,15 @@ app.get("/saved", function (req, res) {
     .catch(function (err) {
       res.json(err);
     });
+    
+});
+
+app.put("/delete/:id", function (req, res) {
+  db.Article
+    .findOneAndUpdate({ _id: req.params.id }, { saved: false })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+
 });
 
 app.listen(PORT, function () {

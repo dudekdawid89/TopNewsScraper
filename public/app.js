@@ -56,7 +56,44 @@ $(document).on("click", ".buttonSaved", function() {
       $("#notes").empty();
     });
 
-  $("#titleinput").val("");
-  $("#bodyinput").val("");
+  // $("#titleinput").val("");
+  // $("#bodyinput").val("");
 });
 
+$(document).on("click", ".buttonDelete", function() {
+  $(this).animate({
+    height: 'toggle'
+  });
+  var thisId = $(this).attr("data-id");
+  $.ajax({
+    method: "PUT",
+    url: "/delete/" + thisId,
+    data: {}
+  })
+    .then(function(data) {
+      console.log(data);
+      $("#notes").empty();
+    });
+    location.reload()
+  // $("#titleinput").val("");
+  // $("#bodyinput").val("");
+});
+
+$(document).on("click", "#scrapeButton", function() {
+  $(this).animate({
+    height: 'toggle'
+  });
+  var thisId = $(this).attr("data-id");
+  $.ajax({
+    method: "PUT",
+    url: "/articles/" + thisId,
+    data: {}
+  })
+    .then(function(data) {
+      console.log(data);
+      $("#notes").empty();
+    });
+
+  // $("#titleinput").val("");
+  // $("#bodyinput").val("");
+});
