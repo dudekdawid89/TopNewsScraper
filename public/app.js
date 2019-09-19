@@ -93,7 +93,7 @@ $(document).on("click", "#delete", function() {
   var noteId = $(".buttonNote").attr("data-id");
   $.ajax({
     method: "DELETE",
-    url: "/deleteNote/" + noteId+"/"+articleId,
+    url: "/deleteNote/" + noteId+"/"+ articleId,
   })
     .then(function(data) {
       console.log(data);
