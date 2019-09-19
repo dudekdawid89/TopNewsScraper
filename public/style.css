@@ -1,3 +1,7 @@
  a, button, img, #card{
        box-shadow: 1px 1px 7px grey;
     } 
+
+#title{
+      margin-top: 50px;
+}
