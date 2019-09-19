@@ -1,34 +1,22 @@
-$(document).on("click",".buttonNote", function() {
-  $("#notes").empty();
+$(".buttonNote").on("click", function() {
+  
   var thisId = $(this).attr("data-id");
-
-  $.ajax({
-    method: "GET",
-    url: "/articles/" + thisId
-  })
-    .then(function(data) {
-      console.log(data);
-      $("#notes").append("<h2>" + data.title + "</h2>");
-      $("#notes").append("<input id='titleinput' name='title' >");
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-
-      if (data.note) {
-        $("#titleinput").val(data.note.title);
-        $("#bodyinput").val(data.note.body);
-      }
-    });
+  $("#"+thisId).show()
+ 
 });
 
-$(document).on("click", "#savenote", function() {
+$(document).on("click", ".savenote", function() {
+  console.log(this)
   var thisId = $(this).attr("data-id");
+
+  console.log(thisId)
 
   $.ajax({
     method: "POST",
     url: "/articles/" + thisId,
     data: {
-      title: $("#titleinput").val(),
-      body: $("#bodyinput").val()
+      title: $(`#titleinput-${thisId}`).val(),
+      body: $(`#bodyinput-${thisId}`).val()
     }
   })
     .then(function(data) {
@@ -36,8 +24,9 @@ $(document).on("click", "#savenote", function() {
       $("#notes").empty();
     });
 
-  $("#titleinput").val("");
-  $("#bodyinput").val("");
+  $(`#titleinput-${thisId}`).val("");
+  $(`#bodyinput-${thisId}`).val("");
+  location.reload()
 });
 
 
@@ -94,6 +83,23 @@ $(document).on("click", "#scrapeButton", function() {
       $("#notes").empty();
     });
 
+  // $("#titleinput").val("");
+  // $("#bodyinput").val("");
+});
+
+$(document).on("click", "#delete", function() {
+    alert("deleted")
+  var articleId = $(this).attr("data-id");
+  var noteId = $(".buttonNote").attr("data-id");
+  $.ajax({
+    method: "DELETE",
+    url: "/deleteNote/" + noteId+"/"+articleId,
+  })
+    .then(function(data) {
+      console.log(data);
+      $("#notes").empty();
+    });
+    location.reload()
   // $("#titleinput").val("");
   // $("#bodyinput").val("");
 });

@@ -1,12 +1,12 @@
-  <div id="notes"></div>
-<div id="wrapper">
+{{!-- <div id="notes"></div> --}}
+<div class="container">
 
   <div class="text-center">
     <h1>Saved News</h1>
     <hr>
     <a id="scrapeButton" class="btn btn-outline-dark" href="/">Articles</a>
   </div>
-  
+
   <br>
 
   {{#each article}}
@@ -19,22 +19,58 @@
           <br>
           <br>
         </div>
-      <div class="col-md-7">
-      <p class="card-text">{{summary}}</p>
-    
+        <div class="col-md-7">
+          <p class="card-text">{{summary}}</p>
+        </div>
       </div>
-
-      </div>
-
-      
-
       <a href="{{link}}" class="btn btn-outline-dark">Link to website</a>
-      <button class="buttonNote btn btn-outline-dark" data-id="{{_id}}">Note</button>
+      <button class="buttonNote btn btn-outline-dark {{_id}}" data-id="{{_id}}">Leave Comment</button>
       <button class="buttonDelete btn btn-outline-dark" data-id="{{_id}}">Delete article</button>
+      <br>
+      <br>
+      <div class="card">
+        <h5 class="card-header headline" data-id="{{_id}}">Comments</h5>
+        <div class="card-body">
+          <div id={{_id}} style="display: none">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Title Comment</label>
+                <input type="input" class="form-control" id='titleinput-{{_id}}' >
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comment</label>
+                <textarea class="form-control" id='bodyinput-{{_id}}' rows="3"></textarea>
+              </div>
+            </form>
+            <button data-id={{_id}} class=" btn btn-lg savenote">Save Note</button>
+          </div>
+          <div class="notes {{_id}}"></div>
+          {{#each note}}
+          <div class="card">
+  <div class="card-header">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+         
 
-
+<div class="col-9"><p class="card-text"><h1>{{body}}</h1> </p></div>
+<div class="col-3"><button data-id={{_id}} class="btn btn-lg" id="delete">Delete Note</button></div>
+    </div>
+ 
+  </div>
+</div>
+<br>
+          
+          
+          {{/each}}
+        </div>
+      </div>
+      <br>
     </div>
   </div>
+
   <br>
+
   {{/each}}
 </div>

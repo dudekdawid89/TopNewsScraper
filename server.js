@@ -78,7 +78,7 @@ app.get("/articles/:id", function (req, res) {
 app.post("/articles/:id", function (req, res) {
   db.Note.create(req.body)
     .then(function (dbNote) {
-      return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+      return db.Article.findOneAndUpdate({ _id: req.params.id }, {$push :{note: dbNote._id }}, { new: true });
     })
     .then(function (dbArticle) {
       res.json(dbArticle);
@@ -97,9 +97,14 @@ app.put("/articles/:id", function (req, res) {
 
 app.get("/saved", function (req, res) {
   db.Article.find({ saved: true })
+  .populate("note")
     .then(function (dbArticle) {
-      res.render("saved", { article: dbArticle });
+      console.log(dbArticle)
+      res.render("saved", { 
+        
+      article: dbArticle});
     })
+
     .catch(function (err) {
       res.json(err);
     });
@@ -114,6 +119,31 @@ app.put("/delete/:id", function (req, res) {
 
 });
 
+app.delete("/deleteNote/:id", function (req, res) {
+  db.Article
+    .remove({ _id: req.params.id })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+
+});
+
+app.delete("/deleteNote/:note-id/:article-id",function(req,res){
+  articleId=req.params.article-id
+  noteId=req.params.note-id
+   db.Note.remove({_id:noteId}).then(function(data){
+       db.Article.findOne({ _id: articleId })
+        console.log(data)
+       .populate("note")
+       .then(function(dbArticle) {
+        
+         res.json(dbArticle);
+       })
+   })
+})
+
+
 app.listen(PORT, function () {
   console.log("App running on port " + PORT + "!");
 });
+
+
