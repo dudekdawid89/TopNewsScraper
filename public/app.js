@@ -1,8 +1,6 @@
 $(".buttonNote").on("click", function() {
-  
   var thisId = $(this).attr("data-id");
   $("#"+thisId).show()
- 
 });
 
 $(document).on("click", ".savenote", function() {
@@ -23,13 +21,10 @@ $(document).on("click", ".savenote", function() {
       console.log(data);
       $("#notes").empty();
     });
-
   $(`#titleinput-${thisId}`).val("");
   $(`#bodyinput-${thisId}`).val("");
   location.reload()
 });
-
-
 $(document).on("click", ".buttonSaved", function() {
   $(this).animate({
     height: 'toggle'
@@ -44,9 +39,6 @@ $(document).on("click", ".buttonSaved", function() {
       console.log(data);
       $("#notes").empty();
     });
-
-  // $("#titleinput").val("");
-  // $("#bodyinput").val("");
 });
 
 $(document).on("click", ".buttonDelete", function() {
@@ -64,8 +56,6 @@ $(document).on("click", ".buttonDelete", function() {
       $("#notes").empty();
     });
     location.reload()
-  // $("#titleinput").val("");
-  // $("#bodyinput").val("");
 });
 
 $(document).on("click", "#scrapeButton", function() {
@@ -82,9 +72,6 @@ $(document).on("click", "#scrapeButton", function() {
       console.log(data);
       $("#notes").empty();
     });
-
-  // $("#titleinput").val("");
-  // $("#bodyinput").val("");
 });
 
 $(document).on("click", "#delete", function() {
@@ -93,13 +80,11 @@ $(document).on("click", "#delete", function() {
   var noteId = $(".buttonNote").attr("data-id");
   $.ajax({
     method: "DELETE",
-    url: "/deleteNote/" + noteId+"/"+ articleId,
+    url: "/deleteNote/" + noteId+"/"+ articleId
   })
     .then(function(data) {
       console.log(data);
       $("#notes").empty();
     });
     location.reload()
-  // $("#titleinput").val("");
-  // $("#bodyinput").val("");
 });
