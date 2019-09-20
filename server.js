@@ -119,20 +119,15 @@ app.put("/delete/:id", function (req, res) {
 
 });
 
-app.delete("/deleteNote/:id", function (req, res) {
-  db.Article
-    .remove({ _id: req.params.id })
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
 
-});
 
-app.delete("/deleteNote/:note-id/:article-id",function(req,res){
-  articleId=req.params.article-id
-  noteId=req.params.note-id
+app.delete("/deleteNote/:noteid/:articleid",function(req,res){
+  console.log("received-----------------------------------------------------------------------")
+  articleId=req.params.articleid
+  noteId=req.params.noteid
    db.Note.remove({_id:noteId}).then(function(data){
        db.Article.findOne({ _id: articleId })
-        console.log(data)
+        // console.log(data)
        .populate("note")
        .then(function(dbArticle) {
         

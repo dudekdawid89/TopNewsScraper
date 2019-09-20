@@ -76,11 +76,12 @@ $(document).on("click", "#scrapeButton", function() {
 
 $(document).on("click", "#delete", function() {
     alert("deleted")
-  var articleId = $(this).attr("data-id");
-  var noteId = $(".buttonNote").attr("data-id");
+  var noteId = $(this).attr("data-noteid");
+  var  articleId = $(this).attr("data-artid");
+  console.log(noteId)
   $.ajax({
     method: "DELETE",
-    url: "/deleteNote/" + noteId+"/"+ articleId
+    url: "/deleteNote/"+noteId+"/"+ articleId
   })
     .then(function(data) {
       console.log(data);
